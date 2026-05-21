@@ -294,7 +294,7 @@ class RenkoQuantSystem:
         # 计算未来3日收益
         print("计算历史收益...")
         df = df.sort_values(['code', 'date'])
-        df['future_3d_return'] = df.groupby('code')['close'].shift(-3) / df.groupby('code')['close'].shift(-1) - 1
+        df['future_3d_return'] = df.groupby('code')['close'].shift(-3) / df.groupby('code')['open'].shift(-1) - 1
         df = df[df['future_3d_return'].notna()]
 
         # 划分正负样本（收益>=3%为正）
